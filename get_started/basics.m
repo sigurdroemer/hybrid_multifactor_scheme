@@ -1,6 +1,5 @@
 %% Initialize Script
 clear;
-serverRun = false;
 project_folder = fileparts(fileparts(matlab.desktop.editor.getActiveFilename));
 addpath(genpath(project_folder));
 
@@ -41,6 +40,7 @@ b = 0;
 sigma = 1;
 
 % Simulate Gaussian Volterra process:
+K = KernelFunctionClass(1,H-0.5,@(obj,t)(1),10^(-12));
 Xpaths = HybridMultifactorScheme(N,n,T,x0,b,sigma,gamm,c,kappa,'K',K);
 
 % Inspect solution:

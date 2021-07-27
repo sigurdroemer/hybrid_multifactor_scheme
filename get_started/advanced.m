@@ -1,6 +1,5 @@
 %% Initialize Script
 clear;
-serverRun = false;
 project_folder = fileparts(fileparts(matlab.desktop.editor.getActiveFilename));
 addpath(genpath(project_folder));
 
@@ -30,7 +29,7 @@ H = 0.25;
 K = @(t)(t.^(H - 0.5));
 
 % Approximate kernel:
-[c,gamm,K,K_hat] = ApproximateKernel('BM2005','K',K,'epsilon',0.01,'n',n,...
+[c,gamm] = ApproximateKernel('BM2005','K',K,'epsilon',0.01,'n',n,...
                                      'delta',delta,'T',T,'approx_roots',true,'Nz',10^4);
 
 N = 1;
@@ -41,7 +40,7 @@ kappa = 1;
 precision = 'single'; 
 
 % Pre-simulate the underlying Gaussians (speeds up repeated evaluation):
-M = floor(n*T+eps(n*T)) + 1; % ~ floor(n*T) + 1 (avoids round off errors)
+M = floor2(n*T) + 1; % (using floor2 avoids round off errors)
 Z = randn((M-1)*N,kappa+1,precision);
 
 % Enforce positivity of the solution:
@@ -50,9 +49,10 @@ positive = true;
 % Request U-factors as well:
 returnU = true;
 
-% Pre-compute (various) numerical integrals (speeds up repeated evaluation).
+% Pre-compute (various) numerical integrals (can speed up repeated evaluation).
 % Note: Can be replaced by analytical expressions where known.
-SIGMA = CovMatrixByNumericalIntegration(K,kappa,n);
+K = KernelFunctionClass(1,H-0.5,@(obj,t)(1),10^(-12));
+SIGMA = GetVolterraCovarianceMatrix({K},kappa,1/n);
 w = SIGMA(2:end,1);
 
 % Request only a subset of the time points. Important remark: If the time 
@@ -60,7 +60,7 @@ w = SIGMA(2:end,1);
 % down to the nearest grid point:
 tX = t';
 tU = t'; 
-% E.g. try changing the above to say tU = (0.1:0.1:T)';
+% Try e.g. changing the above to tU = (0.1:0.1:T)';
 
 % Define drift and diffusion functions:
 b = @(t,x)(lambda.*(theta-x));
