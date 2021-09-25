@@ -30,14 +30,14 @@ function [c,gamm,K,K_hat,exitflag] = ApproximateKernel(method,varargin)
 %   method: [1x1 string] The method for determining the (c,gamm) coefficients. Options:
 %           
 %               o 'AJEE2019': 
-%                       We use the method of (Abi Jaber and El Euch, 2018) where the auxiliary mean
+%                       We use the method of (Abi Jaber and El Euch, 2019) where the auxiliary mean
 %                       reversion terms, denoted 'eta' in the paper, are set equidistantly. The
 %                       spacing between the points is then chosen in a way that minimizes (an upper
 %                       bound estimate) of the L2([0,T]) error. Method assumes that K is a rough
 %                       fractional kernel.
 %
 %               o 'AJEE2019optim':
-%                       We use the method of (Abi Jaber and El Euch, 2018) where the auxiliary mean
+%                       We use the method of (Abi Jaber and El Euch, 2019) where the auxiliary mean
 %                       reversion terms, denoted 'eta' in the paper, are numerically optimized 
 %                       (without further restrictions) to minimize (an upper bound estimate) of 
 %                       the L2([0,T]) error. Method assumes that K is a rough fractional kernel.
@@ -212,9 +212,9 @@ end
 exitflag = [];
 switch method
     case 'AJEE2019'
-        [c,gamm] = AbiJaberElEuch2018(H,T,m,false,options);
+        [c,gamm] = AbiJaberElEuch2019(H,T,m,false,options);
     case 'AJEE2019optim'
-        [c,gamm,exitflag] = AbiJaberElEuch2018(H,T,m,true,options);
+        [c,gamm,exitflag] = AbiJaberElEuch2019(H,T,m,true,options);
     case 'AJ2019'
         [c,gamm,exitflag] = AbiJaber2019(H,T,m,rm,delta,'explicit',options);
     case 'AJ2019optim'
@@ -246,7 +246,7 @@ end
 
 end
 
-function [c,gamm,exitflag,eta] = AbiJaberElEuch2018(H,T,m,optimL2,options)
+function [c,gamm,exitflag,eta] = AbiJaberElEuch2019(H,T,m,optimL2,options)
 % Description: Uses the methods of (Abi Jaber and El Euch, 2019) to approximate the rough fractional
 % kernel.
 
@@ -254,13 +254,13 @@ exitflag = [];
 
 % Validate inputs:
 if H < 0 || H > 1/2
-    error('ApproximateKernel:AbiJaberElEuch2018: ''H'' must be between 0 and 1/2.'); 
+    error('ApproximateKernel:AbiJaberElEuch2019: ''H'' must be between 0 and 1/2.'); 
 end
 if T < 0
-    error('ApproximateKernel:AbiJaberElEuch2018: ''T'' must be strictly positive.'); 
+    error('ApproximateKernel:AbiJaberElEuch2019: ''T'' must be strictly positive.'); 
 end
 if m < 1
-    error('ApproximateKernel:AbiJaberElEuch2018: ''m'' must be a strictly positive integer.'); 
+    error('ApproximateKernel:AbiJaberElEuch2019: ''m'' must be a strictly positive integer.'); 
 end
 
 % Define some useful functions:
@@ -295,7 +295,7 @@ else
     f2adj = @(delta)(f2(eta_from_delta(delta)));
 
     % Get initial guess and set bounds:
-    [~,~,~,eta0] = AbiJaberElEuch2018(H,T,m,false,'off');
+    [~,~,~,eta0] = AbiJaberElEuch2019(H,T,m,false,'off');
     delta0 = diff(eta0);
     lb = zeros(m,1);
     
@@ -318,13 +318,13 @@ exitflag = [];
 
 % Validate inputs:
 if H < 0 || H > 1/2
-    error('ApproximateKernel:AbiJaberElEuch2018: ''H'' must be between 0 and 1/2.'); 
+    error('ApproximateKernel:AbiJaberElEuch2019: ''H'' must be between 0 and 1/2.'); 
 end
 if T < 0
-    error('ApproximateKernel:AbiJaberElEuch2018: ''T'' must be strictly positive.'); 
+    error('ApproximateKernel:AbiJaberElEuch2019: ''T'' must be strictly positive.'); 
 end
 if m < 1
-    error('ApproximateKernel:AbiJaberElEuch2018: ''m'' must be a strictly positive integer.'); 
+    error('ApproximateKernel:AbiJaberElEuch2019: ''m'' must be a strictly positive integer.'); 
 end
 
 if strcmpi(type,'explicit') && isempty(rm)
