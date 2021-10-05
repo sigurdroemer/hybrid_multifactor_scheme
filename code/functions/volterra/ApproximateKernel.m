@@ -399,7 +399,7 @@ end
 
 function [c,gamm,exitflag] = BeylkinMonzon2005(fOrig,delta,b,N,epsilon,m,approx_roots,Nz,...
                                                weight_tol,error_measure,mu,disable_warn,maxIter)
-% Description: Implements the method of (Beylkin, 2005).
+% Description: Implements the method of (Beylkin and Monzon, 2005).
 
 % Initialize:
 [c,gamm,exitflag] = deal([]);
