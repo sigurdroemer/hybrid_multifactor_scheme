@@ -169,8 +169,8 @@ function [c,gamm,K,K_hat,exitflag] = ApproximateKernel(method,varargin)
 %   o Abi Jaber, E.: Lifting the Heston model. Quantitative Finance, 2019, 19(12), 1995-2013.
 %   o Beylkin, G., Monzon, L.: On approximation of functions by exponential sums. Applied and
 %     Computational Harmonic Analysis, 2005, 19(1), 17-48.
-%   o Roemer, S.E.: Hybrid multifactor scheme for stochastic Volterra equations, 2021,
-%     Working paper available at ssrn.com/abstract=3706253.
+%   o Roemer, S.E.: Hybrid multifactor scheme for stochastic Volterra equations (2022).
+%     Working paper, available at ssrn.com/abstract=3706253.
 %	   
 % -------------------------------------------------------------------------------------------------
 %
@@ -536,7 +536,7 @@ while ~solution_found
 
     % Filter roots:
     if ~isempty(gamm_)
-        idxKeep = imag(gamm_) == 0 & real(gamm_) >= 0 & real(gamm_) <= 1;
+        idxKeep = imag(gamm_) == 0 & real(gamm_) > 0 & real(gamm_) <= 1;
         gamm_ = gamm_(idxKeep);
         if ~isempty(gamm_)
             gamm_ = sort(gamm_,'descend');
@@ -579,12 +579,12 @@ while ~solution_found
 
         if (first_iter && err > epsilon) || (err > epsilon && err_prev > epsilon)
             % Here we attempt to increase m
-            if m < N+1
+            if m < N
                  m = m + 1;
                  m_idx = m_idx + 1;
 
                 % Check if we need to increase the number of eigenvalues and eigenvectors:
-                if m > size(V,2)
+                if m_idx > size(V,2)
                     % Find all eigenvalues and eigenvectors:
                     [V,Lambda,flag] = eigs(H,size(H,1));
                     [~,ind] = sort(max(diag(Lambda),0),'descend');
