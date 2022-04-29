@@ -1,7 +1,7 @@
 # Hybrid multifactor scheme for stochastic Volterra equations with completely monotone kernels
 We implement the hybrid multifactor scheme for the simulation of stochastic Volterra equations with completely monotone kernels.
 
-![equation](http%3A%2F%2Fwww.sciweavers.org%2Ftex2img.php%3Feq%3DX_t%2520%253D%2520g_0%2528t%2529%2520%252B%2520%255Cint_0%255Et%2520K%2528t-s%2529b%2528s%252CX_s%2529ds%2520%252B%2520%255Cint_0%255Et%2520K%2528t-s%2529%255Csigma%2528s%252CX_s%2529dW_s%252C%2520t%2520%255Cgeq%25200%252C%2520%26bc%3DWhite%26fc%3DBlack%26im%3Djpg%26fs%3D12%26ff%3Darev%26edit%3D0)
+![equation](http://www.sciweavers.org/tex2img.php?http%253A%252F%252Fwww.sciweavers.org%252Ftex2img.php%253Feq%253DX_t%252520%25253D%252520g_0%252528t%252529%252520%25252B%252520%25255Cint_0%25255Et%252520K%252528t-s%252529b%252528s%25252CX_s%252529ds%252520%25252B%252520%25255Cint_0%25255Et%252520K%252528t-s%252529%25255Csigma%252528s%25252CX_s%252529dW_s%25252C%252520t%252520%25255Cgeq%2525200%25252C%252520%2526bc%253DWhite%2526fc%253DBlack%2526im%253Djpg%2526fs%253D12%2526ff%253Darev%2526edit%253D0)
 
 
 To get started, see the example scripts in the folder '.../get_started'.
