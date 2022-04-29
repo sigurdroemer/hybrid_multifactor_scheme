@@ -126,8 +126,8 @@ function [iv,se] = GetPricesRoughBergomi(s0,y,q,xi,eta,rho,H,K,T,scheme,N,n,kapp
 %     procesess. Finance and Stochastics, 2017, 21(4), 931-965.
 %   o McCrickerd, R. and Pakkanen, M.S., Turbocharging Monte Carlo pricing for 
 %     the rough Bergomi model. Quantitative Finance, 2018, 18(11), 1877-1886.
-%   o Roemer, S.E., Hybrid multifactor scheme for stochastic Volterra equations, 2021,
-%     Working paper, available at https://www.ssrn.com/abstract=3706253.
+%   o Roemer, S.E., Hybrid multifactor scheme for stochastic Volterra equations with completely 
+%     monotone kernels (2022). Working paper, available at https://www.ssrn.com/abstract=3706253.
 %
 % ------------------------------------------------------------------------------------------------
 
