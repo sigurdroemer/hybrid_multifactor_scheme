@@ -248,8 +248,8 @@ function [Xpaths,Upaths,dW] = HybridMultifactorScheme(N,n,T,g,b,sigma,gamm,c,kap
 % -------------------------------------------------------------------------------------------------
 %  References:
 % -------------------------------------------------------------------------------------------------
-%   o Roemer, S.E.: Hybrid multifactor scheme for stochastic Volterra equations, 2021,
-%     Working paper available at ssrn.com/abstract=3706253.
+%   o Roemer, S.E.: Hybrid multifactor scheme for stochastic Volterra equations with completely
+%     monotone kernels (2022). Working paper available at ssrn.com/abstract=3706253.
 %   o Cheng, S.H., and Higham, N.J., A modified Cholesky algorithm based on a symmetric indefinite 
 %     factorization. SIAM Journal on Matrix Analysis and Applications, 1998, 19(4), 1097-1110.
 %
