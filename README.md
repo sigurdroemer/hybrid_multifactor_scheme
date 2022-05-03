@@ -5,7 +5,7 @@ We implement the hybrid multifactor scheme of (Rømer, 2022) for equations of th
 
 ![equation](https://latex.codecogs.com/svg.image?%5Ctext%7Bwhere%26space%3B%7Dg_0%3A%5Cmathbb%7BR%7D_%26plus%3B%26space%3B%5Crightarrow%26space%3B%5Cmathbb%7BR%7D%2C%26space%3B%5Cphantom%7Bx%7D%26space%3Bb%2C%26space%3B%5Csigma%3A%26space%3B%5Cmathbb%7BR%7D_%26plus%3B%26space%3B%5Ctimes%26space%3B%5Cmathbb%7BR%7D%26space%3B%5Crightarrow%26space%3B%5Cmathbb%7BR%7D%26space%3B%5Ctext%7B%26space%3Bare%26space%3Bfunctions%26space%3Band%26space%3B%7D%26space%3BK%26space%3B%5Cin%26space%3BL%5E2_%7B%5Ctext%7Bloc%7D%7D%28%5Cmathbb%7BR%7D_%26plus%3B%2C%5Cmathbb%7BR%7D%29%26space%3B%5Ctext%7B%26space%3Bis%26space%3Bcompletely%26space%3Bmonotone.%7D)
 
-Remark: In the paper the coefficient functions are only assumed to be functions of the space variable, i.e. not also functions of time. Our code implements the obvious generalisation of the scheme to the stated equation.
+**Remark:** In the paper the coefficient functions are only assumed to be functions of the space variable, i.e. not also of time. Our code implements the obvious generalisation of the scheme to the stated equation.
 
 For a brief introduction to the code, we refer to the scripts in '.../get_started'.
 
